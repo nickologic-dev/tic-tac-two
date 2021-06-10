@@ -1,5 +1,10 @@
-export default class Login {
-    render() {
-      return <h1>Hello</h1>;
-    }
-  }
+import React from "react";
+
+const Login = () => {
+  return (
+    <button className="square">
+      hello
+    </button>
+  );
+}
+export default Login;
