@@ -1,27 +1,53 @@
 import React, { useState } from "react";
-import {TextField, Button} from '@material-ui/core';
+import {TextField, Button, Grid} from '@material-ui/core';
+import JoinGame from "./JoinGame";
+import CreateGame from "./CreateGame";
 
-const Login = () => {
+const Login = ({setGameId}) => {
   const [nickname, setNickname] = useState("");
+  const [joinGame, setJoinGame] = useState(false);
+  const [createGame, setCreateGame] = useState(false);
 
   const handleName = (e) => {
     setNickname(e.target.value);
   };
 
-  const handleStart = () => {
+  const validName = () => {
     if (nickname === "") {
-      console.log("boo", nickname);
+      return false;
     } else {
-      console.log("yay", nickname);
+      return true;
+    }
+  }
+
+  const handleCreate = () => {
+    if (validName()) {
+      setCreateGame(true);
+      setJoinGame(false);
+    }
+  }
+
+  const handleJoin = () => {
+    if (validName()) {
+      setJoinGame(true);
+      setCreateGame(false);
     }
   }
 
   return (
     <div>
       <TextField id="outlined-basic" label="Enter nickname" variant="outlined" onChange={handleName} />
-      <Button onClick={handleStart} variant="contained">Create Game</Button>
-    {false && <TextField id="outlined-basic" label="Enter code" variant="outlined" onChange={handleName} />}
-    <Button onClick={handleStart} variant="contained">Join Game</Button>
+      <Grid container>
+        <Grid item>
+          <Button onClick={handleCreate} variant="contained">Create Game</Button>
+        </Grid>
+          <Grid item></Grid>
+        <Grid item>
+          <Button onClick={handleJoin} variant="contained">Join Existing Game</Button>
+        </Grid>
+      </Grid>
+      {joinGame && <JoinGame nickname={nickname} setGameId={setGameId} />}
+      {createGame && <CreateGame nickname={nickname} setGameId={setGameId} />}
     </div>
   );
 }

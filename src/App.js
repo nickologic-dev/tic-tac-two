@@ -2,15 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react'
 import Login from './components/Login';
+import { useState } from "react";
+import Board from './components/Board'
 
 function App() {
+  const [gameId, setGameId] = useState(null);
   return (
     <div className="App">
       <header className="App-header">
-        <Login/>
+        <Board />
       </header>
     </div>
   );
 }
 
 export default App;
+
+// {gameId === null ? <Login setGameId={setGameId}/> : <div></div>}
