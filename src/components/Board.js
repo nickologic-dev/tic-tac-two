@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Square from "./Square"
 
 const Board = () => {
+  //git issue
     const [board, setBoard] = useState(Array(9).fill(null)); //0-5 is p1, 6-11 is p2
     const [player, setPlayer] = useState(1); 
 
