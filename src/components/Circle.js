@@ -10,15 +10,14 @@ const Circle = ( {value} ) => {
   }))
 
   return (
-    <div id={`circle-${value}`} ref={drag}>
+    <div id="circle" ref={drag}>
       <button>circle</button>
     </div>
   );
 }
 export default Circle;
 
-export function moveCircle(x, y) {
-  // let elem = document.getElementById(`circle-${value}`);
-  // elem.style.top = y + "px";
-  // elem.style.left = x + "px";
+export function moveCircle(square) {
+  let circle = document.getElementById("circle");
+  square.appendChild(circle);
 }

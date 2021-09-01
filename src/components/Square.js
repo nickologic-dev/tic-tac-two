@@ -7,20 +7,19 @@ const Square = ({ value }) => {
   const { gameId, board, setBoard } = PlayGame();
   let rect;
 
-  useEffect(() => { //get dimensions
+  const getCircle = () => { //get dimensions
     let elem = document.getElementById(value);
-    rect = elem.getBoundingClientRect();
-    console.log("here", value);
-    console.log("this", rect);
-  }, [])
+    // rect = elem.getBoundingClientRect();
+    moveCircle(elem)
+  }
 
-  // const [{ isOver }, drop] = useDrop(() => ({
-  //   accept: "circle",
-  //   drop: () => moveCircle(rect.x, rect.y),
-  //   collect: monitor => ({
-  //     isOver: !!monitor.isOver(),
-  //   }),
-  // }), [rect.x, rect.y])
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: "circle",
+    drop: getCircle,
+    collect: monitor => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }))
 
   useEffect(() => {
     console.log("board", board);
@@ -37,8 +36,7 @@ const Square = ({ value }) => {
   }
 
   return (
-
-    <div id={value} >
+    <div id={value} ref={drop}>
       <button className="square" onClick={onClick}>
         {value}
       </button>
