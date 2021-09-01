@@ -20,4 +20,5 @@ export default Circle;
 export function moveCircle(square) {
   let circle = document.getElementById("circle");
   square.appendChild(circle);
+  return 0;
 }
