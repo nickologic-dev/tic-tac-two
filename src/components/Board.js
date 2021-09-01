@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useContext } from "react";
 import Square from "./Square"
 import { PlayGame } from '../GameProvider'
+import Circle from "./Circle";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Board = () => {
     const [player, setPlayer] = useState(1); 
@@ -42,6 +45,7 @@ const Board = () => {
 
   return (
     <div>
+    <DndProvider backend={HTML5Backend}>
       <div>next player: p{player}</div>
         <div className="board-row">
           <Square value={0} />
@@ -58,6 +62,8 @@ const Board = () => {
           <Square value={7} />
           <Square value={8} />
         </div>
+        <Circle value={0}/>
+        </DndProvider>
       </div>
   );
 }
