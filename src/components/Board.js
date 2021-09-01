@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Square from "./Square"
+import { PlayGame } from '../GameProvider'
 
 const Board = () => {
   //git issue
-    const [board, setBoard] = useState(Array(9).fill(null)); //0-5 is p1, 6-11 is p2
+    // const [board, setBoard] = useState(Array(9).fill(null)); //0-5 is p1, 6-11 is p2
     const [player, setPlayer] = useState(1); 
+    const { gameId, board, setBoard } = PlayGame();
 
   useEffect(() => {
     if (isWinner()) {
@@ -44,19 +46,19 @@ const Board = () => {
     <div>
       <div>next player: p{player}</div>
         <div className="board-row">
-          <Square value={0} board={board} setBoard={setBoard} />
-          <Square value={1} board={board} setBoard={setBoard}/>
-          <Square value={2} board={board} setBoard={setBoard}/>
+          <Square value={0} />
+          <Square value={1} />
+          <Square value={2} />
         </div>
         <div className="board-row">
-          <Square value={3} board={board} setBoard={setBoard}/>
-          <Square value={4} board={board} setBoard={setBoard}/>
-          <Square value={5} board={board} setBoard={setBoard}/>
+          <Square value={3} />
+          <Square value={4} />
+          <Square value={5} />
         </div>
         <div className="board-row">
-          <Square value={6} board={board} setBoard={setBoard}/>
-          <Square value={7} board={board} setBoard={setBoard}/>
-          <Square value={8} board={board} setBoard={setBoard}/>
+          <Square value={6} />
+          <Square value={7} />
+          <Square value={8} />
         </div>
       </div>
   );

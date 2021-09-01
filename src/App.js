@@ -6,13 +6,14 @@ import { useState } from "react";
 import Board from './components/Board'
 
 function App() {
-  const [gameId, setGameId] = useState(null);
+
   return (
     <div className="App">
       <header className="App-header">
         <Board />
       </header>
     </div>
+
   );
 }
 
