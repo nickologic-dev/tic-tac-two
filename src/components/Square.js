@@ -5,7 +5,6 @@ import {moveCircle} from './Circle'
 
 const Square = ({ value }) => {
   const { gameId, board, setBoard } = PlayGame();
-  let rect;
 
   const updateBoard = () => { 
     let elem = document.getElementById(value);
