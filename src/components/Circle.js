@@ -4,6 +4,7 @@ import { useDrag } from 'react-dnd'
 const Circle = ( {value} ) => {
   const [{isDragging}, drag] = useDrag(() => ({
     type: "circle",
+    item: {id: value},
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),
@@ -16,9 +17,3 @@ const Circle = ( {value} ) => {
   );
 }
 export default Circle;
-
-export function moveCircle(square) {
-  let circle = document.getElementById("circle-3");
-  square.appendChild(circle);
-  return 0;
-}
