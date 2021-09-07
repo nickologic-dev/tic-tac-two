@@ -9,18 +9,10 @@ function GameProvider ({ children }) {
 
     useEffect(() => {
         console.log("called");
-        const unsubscribe = database.collection('games').doc("AAAA").onSnapshot((doc) => {
-            if (doc.exists) {
-                console.log("data", doc);
-            }
-            else {
-                console.log("error getting data")
-            }
-        })
-
-        return () => {
-            unsubscribe()
-        }
+        var starCountRef = database.ref('/');
+        starCountRef.on('value', (snapshot) => {
+            console.log(snapshot.val());
+        });
     }, [id])
 
     return(

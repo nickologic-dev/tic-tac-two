@@ -63,6 +63,11 @@ const Board = () => {
           <Square value={8} />
         </div>
         <Circle value={0}/>
+        <Circle value={1}/>
+        <Circle value={2}/>
+        <Circle value={3}/>
+        <Circle value={4}/>
+        <Circle value={5}/>
         </DndProvider>
       </div>
   );
