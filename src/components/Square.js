@@ -5,7 +5,7 @@ import Circle from "./Circle";
 
 const Square = ({ value }) => {
   const { gameId, board, setBoard } = PlayGame();
-  const [hasPiece, setHasPiece] = useState();
+  const [hasPiece, setHasPiece] = useState(null);
 
   const [{ isOver }, drop] = useDrop(() => ({
     accept: "circle",
@@ -27,11 +27,12 @@ const Square = ({ value }) => {
 
   useEffect(() => {
     console.log("board", board);
+    console.log("has",hasPiece)
   }, [board]);
 
   return (
     <div id={value} ref={drop} className="square">
-      { hasPiece ? <Circle value={board[value]} /> : <></>}
+      { hasPiece >= 0 ? <Circle value={ board[value] } /> : <div></div>}
     </div>
   );
 }
