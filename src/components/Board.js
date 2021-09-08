@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import Square from "./Square"
 import { PlayGame } from '../GameProvider'
 import Circle from "./Circle";
@@ -7,9 +7,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Board = () => {
     const [player, setPlayer] = useState(1); 
-    const { gameId, board, setBoard } = PlayGame();
+    const { gameId, board, setBoard, pieces } = PlayGame();
 
-  useEffect(() => {
+    useEffect(() => {
     if (isWinner()) {
       console.log("winnder winnder chicken dinner")
     } else {
@@ -62,14 +62,11 @@ const Board = () => {
           <Square value={7} />
           <Square value={8} />
         </div>
-        <Circle value={0}/>
-        <Circle value={1}/>
-        <Circle value={2}/>
-        <Circle value={3}/>
-        <Circle value={4}/>
-        <Circle value={5}/>
-        </DndProvider>
-      </div>
+        { pieces.map(pieceId => {
+          return <Circle value={pieceId} />
+        }) }
+    </DndProvider>
+    </div>
   );
 }
 export default Board;

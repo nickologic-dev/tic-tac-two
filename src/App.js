@@ -2,13 +2,15 @@ import './App.css';
 import React, { Component } from 'react'
 import Login from './components/Login';
 import Board from './components/Board'
+import { PlayGame } from './GameProvider'
 
 function App() {
+  const { gameId } = PlayGame();
 
   return (
     <div className="App">
       <header className="App-header">
-        <Board />
+        {gameId === null ? <Login /> : <Board />}
       </header>
     </div>
 
@@ -16,5 +18,3 @@ function App() {
 }
 
 export default App;
-
-// {gameId === null ? <Login setGameId={setGameId}/> : <div></div>}

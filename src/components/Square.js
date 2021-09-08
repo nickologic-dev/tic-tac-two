@@ -4,7 +4,7 @@ import { useDrop } from 'react-dnd'
 import Circle from "./Circle";
 
 const Square = ({ value }) => {
-  const { gameId, board, setBoard } = PlayGame();
+  const { gameId, board, setBoard, pieces, setPieces } = PlayGame();
   const [hasPiece, setHasPiece] = useState(null);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -16,18 +16,25 @@ const Square = ({ value }) => {
   }), [board])
 
   const dropPiece = (id) => {
-    setBoard([
-      ...board.slice(0,value),
-      id,
-      ...board.slice(value+1)
-      ]
-    );
-    setHasPiece(id);
+    if (board[value] === null || id > board[value]) {
+      setBoard([
+        ...board.slice(0,value),
+        id,
+        ...board.slice(value+1)
+        ]
+      );
+      setHasPiece(id);
+
+      // var index = pieces.indexOf(id);
+      // pieces.splice(index, 1);
+      // console.log("pieces", pieces);
+      // setPieces(pieces);
+    }
   }
 
   useEffect(() => {
     console.log("board", board);
-    console.log("has",hasPiece)
+    console.log("has", hasPiece)
   }, [board]);
 
   return (

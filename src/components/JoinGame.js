@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import {TextField, Button, Typography} from '@material-ui/core';
+import { PlayGame } from '../GameProvider'
 
-const JoinGame = ( { nickname, setGameId } ) => {
+const JoinGame = ( { nickname } ) => {
+  const { setGameId } = PlayGame();
   const [id, setId] = useState(null);
 
   const handleButton = () => {
     console.log("poop")
     if (id !== null) {
       console.log("successs",id)
-      setGameId(id);
+      setGameId("AAAA");
     }
   }
 
@@ -22,7 +24,7 @@ const JoinGame = ( { nickname, setGameId } ) => {
     <div>
       <Typography>Hello {nickname}!</Typography>
       <TextField id="outlined-basic" label="Enter code" variant="outlined" onChange={onChange} />
-      <Button variant="contained" handleClick={handleButton} >Join Room</Button>
+      <Button variant="contained" onClick={handleButton} >Join Room</Button>
     </div>
   );
 }

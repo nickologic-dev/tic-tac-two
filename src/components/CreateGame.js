@@ -1,13 +1,17 @@
-import React, { useState } from "react";
-import {TextField, Button, Typography} from '@material-ui/core';
+import React, { } from "react";
+import { Button, Typography } from '@material-ui/core';
+import { PlayGame } from '../GameProvider'
 
 const CreateGame = ( { nickname } ) => {
+  const { setGameId } = PlayGame();
 
   return (
     <div>
       <Typography>Hello {nickname}!</Typography>
-      <Typography>CODE</Typography>
-      <Button variant="contained">Start Game</Button>
+      <Typography>AAAA</Typography>
+      <Button variant="contained" onClick={() => {
+        setGameId("BBBB");
+      }}>Start Game</Button>
     </div>
   );
 }

@@ -12,7 +12,7 @@ const Circle = ( {value} ) => {
 
   return (
     <div id={`circle-${value}`} ref={drag} className={`circle size-${value}`}>
-
+      {value}
     </div>
   );
 }

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import {TextField, Button, Grid} from '@material-ui/core';
+import { TextField, Button, Grid } from '@material-ui/core';
 import JoinGame from "./JoinGame";
 import CreateGame from "./CreateGame";
 
-const Login = ({setGameId}) => {
+const Login = ( ) => {
   const [nickname, setNickname] = useState("");
   const [joinGame, setJoinGame] = useState(false);
   const [createGame, setCreateGame] = useState(false);
@@ -46,8 +46,8 @@ const Login = ({setGameId}) => {
           <Button onClick={handleJoin} variant="contained">Join Existing Game</Button>
         </Grid>
       </Grid>
-      {joinGame && <JoinGame nickname={nickname} setGameId={setGameId} />}
-      {createGame && <CreateGame nickname={nickname} setGameId={setGameId} />}
+      {joinGame && <JoinGame nickname={nickname} />}
+      {createGame && <CreateGame nickname={nickname} />}
     </div>
   );
 }
