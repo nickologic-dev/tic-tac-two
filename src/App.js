@@ -18,3 +18,13 @@ function App() {
 }
 
 export default App;
+
+/* TODO: 
+    - make 1 of each player piece (infinite right now)
+    - make other player have pieces
+    - make random code generate for a new game
+    - host on github pages
+    - adjust win condition for size pieces 
+    - test with two players 
+    - make it not ugly 
+*/
