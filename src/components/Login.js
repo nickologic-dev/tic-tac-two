@@ -7,6 +7,7 @@ const Login = ( ) => {
   const [nickname, setNickname] = useState("");
   const [joinGame, setJoinGame] = useState(false);
   const [createGame, setCreateGame] = useState(false);
+  const [gameCode, setGameCode] = useState(null);
 
   const handleName = (e) => {
     setNickname(e.target.value);
@@ -24,6 +25,8 @@ const Login = ( ) => {
     if (validName()) {
       setCreateGame(true);
       setJoinGame(false);
+      var code = makeCode;
+      setGameCode(code);
     }
   }
 
@@ -32,6 +35,16 @@ const Login = ( ) => {
       setJoinGame(true);
       setCreateGame(false);
     }
+  }
+
+  const makeCode = () => {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for ( var i = 0; i < 4; i++ ) {
+      result += characters.charAt(Math.floor(Math.random() * 
+      characters.length));
+    }
+    return result;
   }
 
   return (
@@ -47,7 +60,7 @@ const Login = ( ) => {
         </Grid>
       </Grid>
       {joinGame && <JoinGame nickname={nickname} />}
-      {createGame && <CreateGame nickname={nickname} />}
+      {createGame && <CreateGame nickname={nickname} gameCode={gameCode} />}
     </div>
   );
 }

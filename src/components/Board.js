@@ -6,18 +6,11 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Board = () => {
-    const [player, setPlayer] = useState(1); 
-    const { gameId, board, setBoard, pieces } = PlayGame();
+    const { gameId, board, pieces, nicknames, currentPlayer } = PlayGame();
 
     useEffect(() => {
     if (isWinner()) {
-      console.log("winnder winnder chicken dinner")
-    } else {
-      if (player === 0) {
-        setPlayer(1);
-      } else {
-        setPlayer(0);
-      }
+      // console.log("winnder winnder chicken dinner")
     }
   }, [board]);
 
@@ -39,14 +32,11 @@ const Board = () => {
     return false
   }
 
-  const isPlayerOne = (value) => {
-    return value > 0 && value < 6;
-  }
-
   return (
     <div>
     <DndProvider backend={HTML5Backend}>
-      <div>next player: p{player}</div>
+      <div>room: {gameId}</div>
+      <div>current player: {currentPlayer}</div>
         <div className="board-row">
           <Square value={0} />
           <Square value={1} />

@@ -33,8 +33,7 @@ const Square = ({ value }) => {
   }
 
   useEffect(() => {
-    console.log("board", board);
-    console.log("has", hasPiece)
+    // console.log("board", board);
   }, [board]);
 
   return (

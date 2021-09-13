@@ -27,10 +27,17 @@
 }
 
 .circle {
-  background-color: yellow;
   border-radius: 50%;
   display: inline-block;
   margin: auto;
+}
+
+.circle_p0 {
+  background-color: yellow;
+}
+
+.circle_p1 {
+  background-color: rgb(0, 204, 255);
 }
 
 .size-0 {
