@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import database from './firebase.setup';
-import { ref, set } from "firebase";
 
 const GameContext = React.createContext();
 

@@ -14,8 +14,8 @@ const Circle = ( {value} ) => {
   }))
 
   return (
-    <div id={`circle-${value}`} ref={drag} className={`circle size-${value} circle_p${player}`}>
-      {value}
+    <div id={`circle-${value}`} ref={drag} className={`circle size-${value} circle_p${value < 6 ? 0 : 1}`}>
+      { value != null && player == 1 ? value + 6 : value }
     </div>
   );
 }
