@@ -15,7 +15,7 @@ const Square = ({ value }) => {
     }),
   }), [board])
 
-  const dropPiece = (id) => {
+  const dropPiece = (id) => { // updates a turn too late 
     if (board[value] === null || id > board[value]) {
       setBoard([
         ...board.slice(0,value),
@@ -23,6 +23,7 @@ const Square = ({ value }) => {
         ...board.slice(value+1)
         ]
       );
+      console.log("drop ", board);
       setHasPiece(id);
 
       // var index = pieces.indexOf(id);

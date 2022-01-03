@@ -44,11 +44,9 @@ function GameProvider ({ children }) {
         return database.ref().update(updates);
     }
 
-    useEffect(() => {
-        console.log("called");
+    function receiveUserData() {
         var starCountRef = database.ref('/');
         starCountRef.on('value', (snapshot) => {
-            console.log(snapshot.val());
             var snap = snapshot.val();
             if (snap.games[id].board) {
                 var tempBoard = Array(9).fill(null);
@@ -57,12 +55,21 @@ function GameProvider ({ children }) {
                         tempBoard[i] = snap.games[id].board[i];
                     }
                 }
-                setBoard(tempBoard);
-                setNicknames(snap.games[id].nicknames);
-                console.log("QWRETRYT", snap.games[id].nextPlayer);
-                setCurrentPlayer(snap.games[id].nextPlayer);
+                console.log("ME ", player);
+                console.log("NOT ME ", snap.games[id].nextPlayer);
+                if (player != snap.games[id].nextPlayer) {
+                    console.log("reached");
+                    setBoard(tempBoard);
+                    setNicknames(snap.games[id].nicknames);
+                    console.log("QWRETRYT", snap.games[id].nextPlayer);
+                    setCurrentPlayer(snap.games[id].nextPlayer);
+                }
             }
         });
+    }
+
+    useEffect(() => {
+        receiveUserData()
     }, [id])
 
     return(
