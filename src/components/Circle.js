@@ -3,11 +3,12 @@ import { useDrag } from 'react-dnd'
 import { PlayGame } from '../GameProvider'
 
 const Circle = ( {value} ) => {
-  const { player } = PlayGame();
+  const { player, currentPlayer } = PlayGame();
 
   const [{isDragging}, drag] = useDrag(() => ({
     type: "circle",
     item: {id: value},
+    canDrag: player == currentPlayer, // checks that it's their turn before moving piece 
     collect: monitor => ({
       isDragging: !!monitor.isDragging(),
     }),

@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { PlayGame } from '../GameProvider'
 import { useDrop } from 'react-dnd'
 import Circle from "./Circle";
 
 const Square = ({ value }) => {
-  const { gameId, board, setBoard, pieces, setPieces, player } = PlayGame();
+  const { board, setBoard, pieces, setPieces, player } = PlayGame();
   const [hasPiece, setHasPiece] = useState(null);
 
   const [{ isOver }, drop] = useDrop(() => ({
@@ -31,10 +31,6 @@ const Square = ({ value }) => {
       // setPieces(pieces);
     }
   }
-
-  useEffect(() => {
-    // console.log("board", board);
-  }, [board]);
 
   return (
     <div id={value} ref={drop} className="square">

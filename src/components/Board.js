@@ -6,11 +6,10 @@ import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Board = () => {
-    const { gameId, board, pieces, nicknames, currentPlayer } = PlayGame();
+    const { gameId, board, pieces, nicknames, currentPlayer, player } = PlayGame();
 
     useEffect(() => {
     if (isWinner()) {
-      // console.log("winnder winnder chicken dinner")
     }
   }, [board]);
 
@@ -37,6 +36,7 @@ const Board = () => {
     <DndProvider backend={HTML5Backend}>
       <div>room: {gameId}</div>
       <div>current player: {currentPlayer}</div>
+      <div>me {player}</div>
         <div className="board-row">
           <Square value={0} />
           <Square value={1} />

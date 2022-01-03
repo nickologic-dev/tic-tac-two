@@ -16,18 +16,19 @@ function GameProvider ({ children }) {
        updateUserData()
     }, [board, id])
 
-    function writeUserData() {
-        database.ref('/').set({
-            game: {
-                id: id,
-                board: board
-            }
-        });
-    }
+    // function writeUserData() {
+    //     database.ref('/').set({
+    //         game: {
+    //             id: id,
+    //             board: board
+    //         }
+    //     });
+    // }
 
     function updateUserData() {
         console.log("helllo dude");
 
+        //TODO: fix how player is updated. updates too often.
         var nextPlayer;
         if (player === 0) {
             nextPlayer = 1;
